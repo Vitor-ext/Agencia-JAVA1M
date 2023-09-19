@@ -1,5 +1,7 @@
 package br.senai.sp.jandira.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Veiculo {
@@ -10,6 +12,8 @@ public class Veiculo {
 
     /** Instancia Scanner */
     Scanner teclado = new Scanner(System.in);
+
+    List<Veiculo> listVeiculos = new ArrayList<>();
 
     public void cadastrarVeiculo(){
 
@@ -33,8 +37,17 @@ public class Veiculo {
 
     }
 
-    public void listarVeiculos(){
 
+    public void adicionarVeiculo(Veiculo ObjVeiculo){
+        listVeiculos.add(ObjVeiculo);
+    }
+
+
+
+    public void listarVeiculos(){
+        for (Veiculo veiculo : listVeiculos){
+            System.out.println(veiculo.modelo);
+        }
     }
 
 

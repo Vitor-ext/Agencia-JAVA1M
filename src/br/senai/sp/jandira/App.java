@@ -9,13 +9,8 @@ public class App {
         System.out.println("-    Concessionaria MultiMarcas   -");
         System.out.println("-----------------------------------");
 
-
         Menu objMenu = new Menu();
         objMenu.menu();
-
-
-
-
 
     }
 }
