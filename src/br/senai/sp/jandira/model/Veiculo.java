@@ -31,6 +31,7 @@ public class Veiculo {
         combustivel = teclado.nextLine();
         System.out.print("Informe o valor: ");
         valor = teclado.nextDouble();
+        teclado.nextLine();
         System.out.println("------------------------------");
 
         System.out.println("Cadastro Finalizado !!");

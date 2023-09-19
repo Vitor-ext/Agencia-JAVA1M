@@ -24,7 +24,10 @@ public class Menu {
             System.out.println("2 - Cadastrar Veiculo");
             System.out.println("3 - Cadastrar Funcionario");
             System.out.println("4 - Realizar Venda");
-            System.out.println("5 - Sair do App");
+            System.out.println("5 - Listar Veiculos");
+            System.out.println("6 - Listar Clientes");
+            System.out.println("7 - Pesquisar Veiculo");
+            System.out.println("8 - Sair do App");
             System.out.println("--------------------------");
 
             int decisaoUsuario = teclado.nextInt();
@@ -34,10 +37,12 @@ public class Menu {
 
                 case 1:
                     objCliente.cadastrarCliente();
+                    objCliente.adicionarCliente(objCliente);
                     break;
 
                 case 2:
                     objVeiculo.cadastrarVeiculo();
+                    objVeiculo.adicionarVeiculo(objVeiculo);
                     break;
 
                 case 3:
@@ -61,12 +66,23 @@ public class Menu {
                     break;
 
                 case 5:
+                    objVeiculo.listarVeiculos();
+                    break;
+
+                case 6:
+                    objCliente.listClientes();
+                    break;
+                case 7:
+                    System.out.println("Feature in Development !!!");
+                    break;
+
+                case 8:
                     continuar = false;
                     break;
 
             }
 
-            if (decisaoUsuario < 0 || decisaoUsuario > 5 ){
+            if (decisaoUsuario < 0 || decisaoUsuario > 8 ){
                 System.out.println("Digite uma opção válida");
             }
 
