@@ -8,7 +8,7 @@ public class Menu {
 
     Scanner teclado = new Scanner(System.in);
 
-    Funcionario objFuncionario = new Funcionario();
+    Funcionario funcionario = new Funcionario();
     Venda objVenda = new Venda();
 
     Veiculo veiculo = new Veiculo();
@@ -30,8 +30,9 @@ public class Menu {
             System.out.println("4 - Realizar Venda");
             System.out.println("5 - Listar Veiculos");
             System.out.println("6 - Listar Clientes");
-            System.out.println("7 - Pesquisar Veiculo");
-            System.out.println("8 - Sair do App");
+            System.out.println("7 - Listar Funcionarios");
+            System.out.println("8 - Pesquisar Veiculo");
+            System.out.println("9 - Sair do App");
             System.out.println("--------------------------");
 
             int decisaoUsuario = teclado.nextInt();
@@ -53,20 +54,22 @@ public class Menu {
                     break;
 
                 case 3:
+                    Funcionario objFuncionario = new Funcionario();
                     objFuncionario.cadastrarFuncionario();
+                    funcionario.adicionarFuncionario(objFuncionario);
                     break;
 
                 case 4:
-                    boolean venda = objVenda.realizarVenda(objCliente, objVeiculo);
-
-                    if (venda){
-                        objCliente.dinheiroDisponivel -= objVeiculo.valor;
-                        System.out.println("Seu saldo é: " + objCliente.dinheiroDisponivel);
-                    }
-
-                    objFuncionario.bonusFuncionario(objVeiculo);
-
-                    System.out.println("O Funcionario recebeu: " + objFuncionario.bonus);
+//                    boolean venda = objVenda.realizarVenda(objCliente, objVeiculo);
+//
+//                    if (venda){
+//                        objCliente.dinheiroDisponivel -= objVeiculo.valor;
+//                        System.out.println("Seu saldo é: " + objCliente.dinheiroDisponivel);
+//                    }
+//
+//                    objFuncionario.bonusFuncionario(objVeiculo);
+//
+//                    System.out.println("O Funcionario recebeu: " + objFuncionario.bonus);
 
                     JOptionPane.showMessageDialog(null, "Valeu Pelo Dinheiro!", "Finalização Venda", JOptionPane.WARNING_MESSAGE);
 
@@ -79,17 +82,37 @@ public class Menu {
                 case 6:
                     cliente.listClientes();
                     break;
+
                 case 7:
-                    System.out.println("Feature in Development !!!");
+                    funcionario.listFuncionarios();
+                    break;
+                case 8:
+                    System.out.println("Informe Qual o Modelo do Veiculo: ");
+                    String veiculoPesquisado = teclado.nextLine();
+                    Boolean validaVeiculo = false;
+
+                    if (veiculoPesquisado != null && veiculoPesquisado != "") {
+                        validaVeiculo = veiculo.pesquisarVeiculo(veiculoPesquisado);
+                    }else {
+                        System.out.println("Impossivel Realizar Pesquisa !");
+                    }
+
+
+                    if (validaVeiculo){
+                        System.out.println("Veiculo Disponivel Para Compra");
+                    } else {
+                        System.out.println("Infelizmente Veiculo Indisponivel");
+                    }
+
                     break;
 
-                case 8:
+                case 9:
                     continuar = false;
                     break;
 
             }
 
-            if (decisaoUsuario < 0 || decisaoUsuario > 8 ){
+            if (decisaoUsuario < 0 || decisaoUsuario > 9 ){
                 System.out.println("Digite uma opção válida");
             }
 
