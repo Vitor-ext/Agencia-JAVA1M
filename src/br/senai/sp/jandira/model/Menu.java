@@ -8,12 +8,16 @@ public class Menu {
 
     Scanner teclado = new Scanner(System.in);
 
-    Cliente objCliente = new Cliente();
-    Veiculo objVeiculo = new Veiculo();
     Funcionario objFuncionario = new Funcionario();
     Venda objVenda = new Venda();
 
+    Veiculo veiculo = new Veiculo();
+
+    Cliente cliente = new Cliente();
+
+
     public void menu(){
+
 
         boolean continuar = true;
 
@@ -33,16 +37,19 @@ public class Menu {
             int decisaoUsuario = teclado.nextInt();
             teclado.nextLine();
 
+
             switch (decisaoUsuario){
 
                 case 1:
-                    objCliente.cadastrarCliente();
-                    objCliente.adicionarCliente(objCliente);
+                    Cliente objCliente = new Cliente();
+                    objCliente.cadastrarCliente(objCliente);
+                    cliente.adicionarCliente(objCliente);
                     break;
 
                 case 2:
+                    Veiculo objVeiculo = new Veiculo();
                     objVeiculo.cadastrarVeiculo();
-                    objVeiculo.adicionarVeiculo(objVeiculo);
+                    veiculo.adicionarVeiculo(objVeiculo);
                     break;
 
                 case 3:
@@ -66,11 +73,11 @@ public class Menu {
                     break;
 
                 case 5:
-                    objVeiculo.listarVeiculos();
+                    veiculo.listarVeiculos();
                     break;
 
                 case 6:
-                    objCliente.listClientes();
+                    cliente.listClientes();
                     break;
                 case 7:
                     System.out.println("Feature in Development !!!");

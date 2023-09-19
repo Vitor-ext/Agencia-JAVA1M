@@ -16,7 +16,7 @@ public class Cliente {
 
     List<Cliente> listClientes = new ArrayList<>();
 
-    public void cadastrarCliente(){
+    public Cliente cadastrarCliente(Cliente cliente){
 
         System.out.println("----- Cadastro Cliente ------");
         System.out.print("Informe seu nome: ");
@@ -40,6 +40,8 @@ public class Cliente {
         System.out.println("------------------------------");
 
         System.out.println("Cadastro Finalizado !!");
+
+        return cliente;
 
     }
 
