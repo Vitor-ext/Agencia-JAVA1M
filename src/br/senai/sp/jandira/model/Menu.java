@@ -1,13 +1,11 @@
 package br.senai.sp.jandira.model;
 
 import javax.swing.*;
+import java.lang.ref.Cleaner;
 import java.util.Scanner;
 
 public class Menu {
-
-
     Scanner teclado = new Scanner(System.in);
-
     Funcionario funcionario = new Funcionario();
     Venda objVenda = new Venda();
 
@@ -60,18 +58,39 @@ public class Menu {
                     break;
 
                 case 4:
-//                    boolean venda = objVenda.realizarVenda(objCliente, objVeiculo);
-//
-//                    if (venda){
-//                        objCliente.dinheiroDisponivel -= objVeiculo.valor;
-//                        System.out.println("Seu saldo é: " + objCliente.dinheiroDisponivel);
-//                    }
-//
-//                    objFuncionario.bonusFuncionario(objVeiculo);
-//
-//                    System.out.println("O Funcionario recebeu: " + objFuncionario.bonus);
 
-                    JOptionPane.showMessageDialog(null, "Valeu Pelo Dinheiro!", "Finalização Venda", JOptionPane.WARNING_MESSAGE);
+                    cliente.listClientes();
+                    System.out.println("Informe qual cliente deseja comprar um veiculo");
+                    String comprador = teclado.nextLine();
+
+                    veiculo.listarVeiculos();
+                    System.out.print("Informe qual veiculo:  ");
+                    String veiculoSelecionado = teclado.nextLine();
+
+                    funcionario.listFuncionarios();
+                    System.out.println("Informe quem é o vendedor: ");
+                    String vendedor = teclado.nextLine();
+
+                    Cliente objComprador = cliente.pesquisarComprador(comprador);
+
+                    Veiculo objVeiculoCompra = veiculo.pesquisarVeiculoCompra(veiculoSelecionado);
+
+                    Funcionario objVendedor = funcionario.pesquisarVendedor(vendedor);
+
+                    boolean venda = objVenda.realizarVenda(objComprador, objVeiculoCompra);
+
+                    if (venda){
+                        objComprador.dinheiroDisponivel -= objVeiculoCompra.valor;
+                        System.out.println("Seu saldo é: " + objComprador.dinheiroDisponivel);
+
+                        objVendedor.bonusFuncionario(objVeiculoCompra);
+
+                        System.out.println("O Funcionario recebeu: " + objVendedor.bonus);
+
+                        JOptionPane.showMessageDialog(null, "Valeu Pelo Dinheiro!", "Finalização Venda", JOptionPane.WARNING_MESSAGE);
+
+                    }
+
 
                     break;
 
