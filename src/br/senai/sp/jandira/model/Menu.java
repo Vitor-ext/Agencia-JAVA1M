@@ -77,9 +77,18 @@ public class Menu {
 
                     Funcionario objVendedor = funcionario.pesquisarVendedor(vendedor);
 
-                    boolean venda = objVenda.realizarVenda(objComprador, objVeiculoCompra);
+                    boolean formaPagamento = objVenda.validarFormaPagamento();
 
-                    if (venda){
+                    boolean vendaDireta = false;
+                    boolean vendaFinanciada = false;
+
+                    if (formaPagamento) {
+                       vendaDireta = objVenda.realizarVenda(objComprador, objVeiculoCompra);
+                    } else {
+                       vendaFinanciada = objVenda.financiarVeiculo(objComprador, objVeiculoCompra);
+                    }
+
+                    if (vendaDireta || vendaFinanciada){
                         objComprador.dinheiroDisponivel -= objVeiculoCompra.valor;
                         System.out.println("Seu saldo é: " + objComprador.dinheiroDisponivel);
 
