@@ -89,13 +89,17 @@ public class Menu {
                     }
 
                     if (vendaDireta || vendaFinanciada){
-                        objComprador.dinheiroDisponivel -= objVeiculoCompra.valor;
+
+                        if (vendaDireta){
+                            objComprador.dinheiroDisponivel -= objVeiculoCompra.valor;
+                        } else {
+                            objComprador.dinheiroDisponivel -= objVenda.valorParcela;
+                        }
+
+
                         System.out.println("Seu saldo é: " + objComprador.dinheiroDisponivel);
-
                         objVendedor.bonusFuncionario(objVeiculoCompra);
-
                         System.out.println("O Funcionario recebeu: " + objVendedor.bonus);
-
                         JOptionPane.showMessageDialog(null, "Valeu Pelo Dinheiro!", "Finalização Venda", JOptionPane.WARNING_MESSAGE);
 
                     }

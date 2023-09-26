@@ -6,6 +6,8 @@ public class Venda {
 
     Scanner teclado = new Scanner(System.in);
 
+    double valorParcela;
+
     public boolean realizarVenda(Cliente objCliente, Veiculo objVeiculo){
 
         System.out.println("------ Validando Venda -------");
@@ -61,7 +63,7 @@ public class Venda {
             int parcelas = teclado.nextInt();
             teclado.nextLine();
 
-            double valorParcela = valorFinanciado/parcelas;
+            valorParcela = valorFinanciado/parcelas;
 
             System.out.println("A parcela ficou em " + valorParcela + " reais");
 
